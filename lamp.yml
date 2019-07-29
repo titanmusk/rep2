@@ -1,0 +1,14 @@
+- hosts: web
+  user: ansible
+  sudo: yes
+  tasks:
+    - name: install lamp stack
+      become: yes
+      apt:
+        pkg:
+          - nginx
+    - name: tempale 
+      template:
+         src: site.j2
+         dest: /var/www/html/site.html
+         mode: '0644'
